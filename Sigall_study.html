@@ -84,7 +84,8 @@
   if(prolificID == null) {prolificID = "999";}
 
   // The relational information 
-  var relation = jsPsych.randomization.sampleWithoutReplacement(["friends", "ennemies"], 1)[0];
+  var relation = jsPsych.data.getURLVariable("relation");
+  if(relation == null) {relation = jsPsych.randomization.sampleWithoutReplacement(["friends", "ennemies"], 1)[0];}
 
   /* Material */
   // in R, use the following line code to list files in a directory:
@@ -203,8 +204,9 @@
   stims.map(function (e, i) { e.US = US[i] });
   var USCSpairing = CS + US;
 
-  // randomized US-CS horizontal position
-  stims.map(function (e) { e.CSposition = _.sample(["left", "right"]) });
+  // between-pp US-CS horizontal position
+  var CSposition_between = jsPsych.randomization.sampleWithoutReplacement(["left", "right"], 1);
+  stims.map(function (e) { e.CSposition = CSposition_between });
 
   /* EXPERIMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   /* Fullscreen mode & Consent */
@@ -566,7 +568,6 @@ var evacond_friends = {
         type: 'survey-likert',
         preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + ciImg.imgHtml,
         questions: [
-        /*
           {prompt: "", labels: scaleSociable, required: true},
           {prompt: "", labels: scaleFunLoving, required: true},
           {prompt: "", labels: scaleLikable, required: true},
@@ -608,7 +609,6 @@ var evacond_friends = {
           {prompt: "", labels: scaleMaterialistic, required: true},
           {prompt: "", labels: scalePompous, required: true},
           {prompt: "", labels: scalePrudish, required: true},
-          */
           {prompt: "", labels: scaleBoastfull, required: true},
         ],
         randomize_question_order: true, 
@@ -686,7 +686,6 @@ var evacond_friends = {
         type: 'survey-likert',
         preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + ciImg.imgHtml,
         questions: [
-        /*
           {prompt: "", labels: scaleSociable, required: true},
           {prompt: "", labels: scaleFunLoving, required: true},
           {prompt: "", labels: scaleLikable, required: true},
@@ -728,7 +727,6 @@ var evacond_friends = {
           {prompt: "", labels: scaleMaterialistic, required: true},
           {prompt: "", labels: scalePompous, required: true},
           {prompt: "", labels: scalePrudish, required: true},
-          */
           {prompt: "", labels: scaleBoastfull, required: true},
         ],
         randomize_question_order: true, 
@@ -859,7 +857,6 @@ USCSjudge.map(function(ciImg){
           var parsed_response  = JSON.parse(data.responses);
           data.attractiveness    = parsed_response.Q0 * 10;
           data.facejudged    = ciImg.imgHtml;
-          //data.faceattract              = ciImg.imgHtml;
         },
     };
     judgments_attractiveness.push(likert_trial);
@@ -1103,8 +1100,8 @@ CSjudge.map(function(ciImg){
   debrief += "Individuals tend to attribute many positive qualities to attractive persons. For instance, when a person is attractive, "; 
   debrief += "people tend to think that s/he is also trustworthy.<br><br>";
   debrief += "Our goal is to test if we can find a similar effect (that is called the “attractiveness Halo effect”) in the present study "; 
-  debrief += "with our procedure. Indeed, in the present study, we presented you faces varying on attractiveness (presented first), together "; 
-  debrief += "with faces relatively neutral on attractiveness (presented right after). ";
+  debrief += "with our procedure. Indeed, in the present study, we presented you faces varying on attractiveness, together "; 
+  debrief += "with faces relatively neutral on attractiveness. ";
   debrief += "Our hypothesis was thus that the attractiveness value of the attractive/less attractive face should influence the ";
   debrief += "perceived attractiveness of the other face in the pair. Therefore, participants’ evaluations of the initially neutral faces "; 
   debrief += "should vary as a function of the physical attractiveness of the faces they were paired with. <br><br>";
