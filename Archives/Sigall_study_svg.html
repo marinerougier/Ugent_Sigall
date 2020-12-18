@@ -85,8 +85,8 @@
 
   // The relational information 
   var relation = jsPsych.data.getURLVariable("relation");
-  //if(relation == null) {relation = jsPsych.randomization.sampleWithoutReplacement(["friends"], 1)[0];}
-  if(relation == null) {relation = jsPsych.randomization.sampleWithoutReplacement(["friends", "ennemies"], 1)[0];}
+  if(relation == null) {relation = jsPsych.randomization.sampleWithoutReplacement(["friends"], 1)[0];}
+  //if(relation == null) {relation = jsPsych.randomization.sampleWithoutReplacement(["friends", "ennemies"], 1)[0];}
 
   /* Material */
   // in R, use the following line code to list files in a directory:
@@ -297,30 +297,30 @@ var Instr_gene3 = {
     stimulus: function() {
       var html = "";
       html += "<h1>Study of accuracy in person perception</h1>";
-      html += "<p class='justify'>This study is divided into <b>two parts</b> and you will go trough these two parts <b>three times in total.</b> <br><br>";
-      html += "In Part 1, we will show you the faces of two persons (i.e., a pair of faces) ";
+      html += "<p class='justify'>This study is divided into <b>two parts. </b><br><br>";
+      html += "In Part 1, we will show you the faces of two persons (i.e., pairs of faces) ";
       html += "with some additional information about <b>how these two persons are related to each other in real life. </b>";
-      html += "Your task will be to <b>guess the specific reason why these two persons are related the way they are. </b><br><br>";
-      html += "In Part 2, your task will be to <b>report several judgments on one of the two persons presented in Part 1.</b> ";
+      html += "Your task will be to <b>guess the reason why these two persons are related the way they are. </b><br><br>";
+      html += "In Part 2, your task will be to <b>report several judgments on one particlar person that was previously presented within a pair.</b> ";
       html += "Specifically, you will evaluate that person on <b>42 personality traits or personality outcomes. </b><br><br>";
+      html += "Note that <b><u> Part 1 and 2 will be repteated three times each. </u></b>" ;
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
       return html;
     },
   };
 
 
-var i = 1;
-
-var Instr_gene_friends_part1_0 = {
+var Instr_gene_friends_part1 = {
     type: "html-keyboard-response",
     post_trial_gap: 300,
     choices: [32],
     stimulus: function() {
       var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 (1/3) </h1>";
-      html += "<p class='justify'>It is very important for you to know that the persons that will be presented in this study <b><u>are very good FRIENDS in real life.</b></u> <br><br>";
-      html += "For each pair, we will present you <b><u>two potential reasons why these persons are friends.</b></u> ";
+      html += "<h1>Study of accuracy in person perception: PART 1</h1>";
+      html += "<p class='justify'>It is very important for you to know that the persons that will be presented within each pair <b><u>are very good FRIENDS in real life.</b></u> ";
+      html += "For each pair, we will present you <b><u>two potential reasons why the two persons are friends.</b></u> ";
       html += "Your task is to decide <b>which of the two is the more likely to explain why these persons are friends. </b><br><br>";
+      html += "Try to follow your momentary impression and <b>do not be surprised when pairs of faces are repeated (each pair will appear 5 times). </b></p><br><br>";
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
       return html;
     },
@@ -331,54 +331,17 @@ var Instr_gene_friends_part1_0 = {
     },
   };
 
-var Instr_gene_friends_part1_1 = {
+var Instr_gene_ennemies_part1 = {
     type: "html-keyboard-response",
     post_trial_gap: 300,
     choices: [32],
     stimulus: function() {
       var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 (2/3) </h1>";
-      html += "<p class='justify'>Again, remember that the persons that will be presented <b><u>are very good FRIENDS in real life.</b></u> <br><br>";
-      html += "As before, your task is to decide <b>which of the two presented reasons is the more likely to explain why these persons are friends. </b><br><br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-    on_load: function () {
-      //$('body').css({ "cursor": "none" });
-      $(".jspsych-content").css("margin-top", "200px");
-      $('.jspsych-content').css({ "max-width": "90%" });
-    },
-  };
-
-var Instr_gene_friends_part1_2 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 (3/3) </h1>";
-      html += "<p class='justify'>Again, remember that the persons that will be presented <b><u>are very good FRIENDS in real life.</b></u> <br><br>";
-      html += "As before, your task is to decide <b>which of the two presented reasons is the more likely to explain why these persons are friends. </b><br><br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-    on_load: function () {
-      //$('body').css({ "cursor": "none" });
-      $(".jspsych-content").css("margin-top", "200px");
-      $('.jspsych-content').css({ "max-width": "90%" });
-    },
-  };
-
-var Instr_gene_ennemies_part1_0 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 </h1>";
-      html += "<p class='justify'>It is very important for you to know that the persons that will be presented in this study <b><u>are ENNEMIES in real life.</b></u> <br><br>";
-      html += "For each pair, we will present you <b><u>two potential reasons why these persons are ennemies.</b></u> ";
+      html += "<h1>Study of accuracy in person perception: PART 1</h1>";
+      html += "<p class='justify'>It is very important for you to know that the persons that will be presented within each pair <b><u>are ENNEMIES in real life.</b></u> ";
+      html += "For each pair, we will present you <b><u>two potential reasons why the two persons are ennemies.</b></u> ";
       html += "Your task is to decide <b>which of the two is the more likely to explain why these persons are ennemies. </b><br><br>";
+      html += "Try to follow your momentary impression and <b>do not be surprised when pairs of faces are repeated (each pair will appear 5 times). </b></p><br><br>";
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
       return html;
     },
@@ -389,137 +352,56 @@ var Instr_gene_ennemies_part1_0 = {
     },
   };
 
-var Instr_gene_ennemies_part1_1 = {
+var Instr_gene_part2 = {
     type: "html-keyboard-response",
     post_trial_gap: 300,
     choices: [32],
     stimulus: function() {
       var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 (2/3) </h1>";
-      html += "<p class='justify'>Again, remember that the persons that will be presented <b><u>are ENNEMIES in real life.</b></u> <br><br>";
-      html += "As before, your task is to decide <b>which of the two presented reasons is the more likely to explain why these persons are ennemies. </b><br><br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-    on_load: function () {
-      //$('body').css({ "cursor": "none" });
-      $(".jspsych-content").css("margin-top", "200px");
-      $('.jspsych-content').css({ "max-width": "90%" });
-    },
-  };
-
-var Instr_gene_ennemies_part1_2 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 1 (3/3) </h1>";
-      html += "<p class='justify'>Again, remember that the persons that will be presented <b><u>are ENNEMIES in real life.</b></u> <br><br>";
-      html += "As before, your task is to decide <b>which of the two presented reasons is the more likely to explain why these persons are ennemies. </b><br><br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-    on_load: function () {
-      //$('body').css({ "cursor": "none" });
-      $(".jspsych-content").css("margin-top", "200px");
-      $('.jspsych-content').css({ "max-width": "90%" });
-    },
-  };
-
-var Instr_gene_part2_0 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 2 (1/3) </h1>";
+      html += "<h1>Study of accuracy in person perception: PART 2</h1>";
       html += "<p class='justify'>Now, your task is to <b>report several judgments on one particlar person that was previously presented.</b> ";
       html += "<p class='justify'>To do so, you will evaluate that person on <b>42 personality traits or personality outcomes. </b><br><br>";
       html += "<b>Given that this study is on person perception, we are not interested in your tact, politeness, or other ";
       html += "factors that are usually important in everyday life situations. </br>";
       html += "It is extremely important that you try to answer <b> as honestly and as spontaneously as possible.</b></br></br>";
+      html += "In total, you will evaluate 3 persons.</b></br></br>";
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
       return html;
     },
   };
 
-var Instr_gene_part2_1 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 2 (2/3) </h1>";
-      html += "<p class='justify'>As before, your task is to <b>report several judgments on one particlar person that was previously presented.</b> ";
-      html += "Remember: It is extremely important that you try to answer <b> as honestly and as spontaneously as possible.</b></br></br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-  };
+  /* RANDOMIZATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  /* PAIRING PROCEDURE */
 
-var Instr_gene_part2_2 = {
-    type: "html-keyboard-response",
-    post_trial_gap: 300,
-    choices: [32],
-    stimulus: function() {
-      var html = "";
-      html += "<h1>Study of accuracy in person perception: PART 2 (3/3) </h1>";
-      html += "<p class='justify'>As before, your task is to <b>report several judgments on one particlar person that was previously presented.</b> ";
-      html += "Remember: It is extremely important that you try to answer <b> as honestly and as spontaneously as possible.</b></br></br>";
-      html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to begin</p>";
-      return html;
-    },
-  };
+  // generate US-CS parings
+  CS.map(function (e) { stims.push({ CS: e }) });
+  stims.map(function (e, i) { e.US = US[i] });
+  var stims = duplicateElements(stims, 6);
 
-  /* PAIRING PROCEDURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  //var response = ["They come from the same town", "They work together", "They have a common hobby", "They are in the same political party"];
+  //stims.map(function (e) { e.RES = jsPsych.randomization.sampleWithoutReplacement(response, 2) });
 
-// determines whether the CS is presented on the left or on the right
-var CSposition_between = jsPsych.randomization.sampleWithoutReplacement(["left", "right"], 1);
 
-var evacond_friends_0 = {
-    timeline: [
-        {
-        type: 'html-button-response',
-        on_load: function () {
-        $(".jspsych-content").css("margin-top", "200px");
-        $('.jspsych-content').css({ "max-width": "100%" });
-        },
-        stimulus: function () {
-        if (CSposition_between == "left") {
-          var leftImg = jsPsych.timelineVariable('CS', true);
-          var rightImg = jsPsych.timelineVariable('US', true);
-        } else {
-          var leftImg = jsPsych.timelineVariable('US', true);
-          var rightImg = jsPsych.timelineVariable('CS', true);
-        };
-        html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are friends?</p><br>";
-        html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
-        html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
-        return html;
-      },
-        choices: jsPsych.timelineVariable('resp'),
-        on_finish: function (data) {
-        $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
-        data.CS = jsPsych.timelineVariable('CS', true);
-        data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true); //data.choices
-      },
-     }
-    ],
-    timeline_variables: [
-        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They work together"]},
-        { CS: CS[0], US: US[0], resp: ["They have a common hobby", "They come from the same town"]},
-        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They are in the same political party"]},
-        { CS: CS[0], US: US[0], resp: ["They work together", "They have a common hobby"]},
-        { CS: CS[0], US: US[0], resp: ["They are in the same political party", "They work together"]},
-        { CS: CS[0], US: US[0], resp: ["They have a common hobby", "They are in the same political party"]},
-    ],
-    randomize_order: true,
-}
+  var stims0 = stims.slice(0, 6);
+  var stims1 = stims.slice(6, 12);
+  var stims2 = stims.slice(12, 18);
+
+
+response1 = ["They come from the same town", "They work together"];
+response2 = ["They come from the same town", "They have a common hobby"];
+response3 = ["They come from the same town", "They are in the same political party"]; //
+response4 = ["They work together", "They have a common hobby"];
+response5 = ["They work together", "They are in the same political party"];//
+response6 = ["They have a common hobby", "They are in the same political party"];//
+
+
+var response = [response1, response2, response3, response4, response5, response6];
+stims0.map(function (e) { e.RES =  jsPsych.randomization.sampleWithoutReplacement(response, 1)});
+
+//stims0.map(function (e) { e.RES =  jsPsych.randomization.sampleWithoutReplacement(response, 1)});
+
+  // between-pp US-CS horizontal position
+  var CSposition_between = jsPsych.randomization.sampleWithoutReplacement(["left", "right"], 1);
 
 
 var evacond_friends_1 = {
@@ -527,6 +409,7 @@ var evacond_friends_1 = {
         {
         type: 'html-button-response',
         on_load: function () {
+        //$('body').css({ "cursor": "none" });
         $(".jspsych-content").css("margin-top", "200px");
         $('.jspsych-content').css({ "max-width": "100%" });
         },
@@ -539,174 +422,187 @@ var evacond_friends_1 = {
           var rightImg = jsPsych.timelineVariable('CS', true);
         };
         html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are friends?</p><br>";
+        html += "<p>Why do you think these two persons are friends?</p><br>";
         html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
         html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
         return html;
       },
-        choices: jsPsych.timelineVariable('resp'),
+            choices: jsPsych.timelineVariable('resp'),
         on_finish: function (data) {
         $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
+        data.cond = "evacond";
         data.CS = jsPsych.timelineVariable('CS', true);
         data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true);
+        data.CSposition = jsPsych.timelineVariable('CSposition', true);
+        data.reason    = data.choices;
       },
      }
     ],
     timeline_variables: [
-        { CS: CS[1], US: US[1], resp: ["They come from the same town", "They work together"]},
-        { CS: CS[1], US: US[1], resp: ["They have a common hobby", "They come from the same town"]},
-        { CS: CS[1], US: US[1], resp: ["They come from the same town", "They are in the same political party"]},
-        { CS: CS[1], US: US[1], resp: ["They work together", "They have a common hobby"]},
-        { CS: CS[1], US: US[1], resp: ["They are in the same political party", "They work together"]},
-        { CS: CS[1], US: US[1], resp: ["They have a common hobby", "They are in the same political party"]},
+        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They work together"]},
+        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They have a common hobby"]},
+        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They are in the same political party"]},
+        { CS: CS[0], US: US[0], resp: ["They work together", "They have a common hobby"]},
+        { CS: CS[0], US: US[0], resp: ["They work together", "They are in the same political party"]},
+        { CS: CS[0], US: US[0], resp: ["They have a common hobby", "They are in the same political party"]},
     ],
     randomize_order: true,
 }
+
+
+var evacond_friends_0 = {
+  timeline_variables: [
+        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They work together"]},
+        { CS: CS[0], US: US[0], resp: ["They come from the same town", "They have a common hobby"]},
+    ],
+    randomize_order: true,
+    //choices: jsPsych.randomization.sampleWithoutReplacement([response1, response2, response3, response4, response5, response6], 1),
+    repetitions: 6, // number of pairs presentation (based on Walther, 2002)
+    //trial_duration: 2000,
+    //post_trial_gap: 4000,
+    on_load: function () {
+      //$('body').css({ "cursor": "none" });
+      $(".jspsych-content").css("margin-top", "200px");
+      $('.jspsych-content').css({ "max-width": "100%" });
+    },
+    timeline: [{
+      type: 'html-button-response',
+      stimulus: function () {
+        if (CSposition_between == "left") {
+          var leftImg = jsPsych.timelineVariable('CS', true);
+          var rightImg = jsPsych.timelineVariable('US', true);
+        } else {
+          var leftImg = jsPsych.timelineVariable('US', true);
+          var rightImg = jsPsych.timelineVariable('CS', true);
+        };
+        html = '';
+        html += "<p>Why do you think these two persons are friends?</p><br>";
+        html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
+        html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
+        return html;
+      },
+      choices: ["They come from the same town", "They work together"],
+        //return jsPsych.randomization.sampleWithoutReplacement(["They come from the same town", "They work together", "They have a common hobby", "They are in the same political party"], 2);
+        //jsPsych.timelineVariable('RESP', true);
+       // jsPsych.randomization.sampleWithoutReplacement([response1, response2, response3, response4, response5, response6], 1);
+        //console.log(RES);
+        //console.log(stims["RES"]);
+        //console.log(jsPsych.timelineVariable('RES'));
+        //console.log(jsPsych.timelineVariable('stims'));
+        //return jsPsych.randomization.sampleWithoutReplacement(["They come from the same town", "They work together", "They have a common hobby", "They are in the same political party"], 2);
+      on_finish: function (data) {
+        $('.jspsych-content').css({ "max-width": "90%" });
+        data.cond = "evacond";
+        data.CS = jsPsych.timelineVariable('CS', true);
+        data.US = jsPsych.timelineVariable('US', true);
+        data.CSposition = jsPsych.timelineVariable('CSposition', true);
+        data.reason    = data.choices;
+      },
+    }]
+  };
+
 
 var evacond_friends_2 = {
-    timeline: [
-        {
-        type: 'html-button-response',
-        on_load: function () {
-        $(".jspsych-content").css("margin-top", "200px");
-        $('.jspsych-content').css({ "max-width": "100%" });
-        },
-        stimulus: function () {
+    timeline_variables: stims,
+    randomize_order: true,
+    choices: jsPsych.NO_KEYS,
+    repetitions: 6, // number of pairs presentation (based on Walther, 2002)
+    //trial_duration: 2000,
+    //post_trial_gap: 4000,
+    on_load: function () {
+      //$('body').css({ "cursor": "none" });
+      $(".jspsych-content").css("margin-top", "200px");
+      $('.jspsych-content').css({ "max-width": "100%" });
+    },
+    timeline: [{
+      type: 'html-button-response',
+      stimulus: function () {
         if (CSposition_between == "left") {
-          var leftImg = jsPsych.timelineVariable('CS', true);
-          var rightImg = jsPsych.timelineVariable('US', true);
+          var leftImg = CS[1];
+          var rightImg = US[1];
         } else {
-          var leftImg = jsPsych.timelineVariable('US', true);
-          var rightImg = jsPsych.timelineVariable('CS', true);
+          var leftImg = US[1];
+          var rightImg = CS[1];
         };
         html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are friends?</p><br>";
+        html += "<p>Why do you think these two persons are friends?</p><br>";
         html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
         html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
         return html;
       },
-        choices: jsPsych.timelineVariable('resp'),
-        on_finish: function (data) {
+      choices: function(){
+        return jsPsych.randomization.sampleWithoutReplacement(["They come from the same town", "They work together", "They have a common hobby", "They are in the same political party"], 2);
+      },
+      on_finish: function (data) {
         $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
+        data.cond = "evacond";
         data.CS = jsPsych.timelineVariable('CS', true);
         data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true);
+        data.CSposition = jsPsych.timelineVariable('CSposition', true);
+        data.reason    = data.choices;
       },
-     }
-    ],
-    timeline_variables: [
-        { CS: CS[2], US: US[2], resp: ["They come from the same town", "They work together"]},
-        { CS: CS[2], US: US[2], resp: ["They have a common hobby", "They come from the same town"]},
-        { CS: CS[2], US: US[2], resp: ["They come from the same town", "They are in the same political party"]},
-        { CS: CS[2], US: US[2], resp: ["They work together", "They have a common hobby"]},
-        { CS: CS[2], US: US[2], resp: ["They are in the same political party", "They work together"]},
-        { CS: CS[2], US: US[2], resp: ["They have a common hobby", "They are in the same political party"]},
-    ],
-    randomize_order: true,
-}
+    }]
+  };
 
-var evacond_ennemies_0 = {
-    timeline: [
-        {
-        type: 'html-button-response',
-        on_load: function () {
-        $(".jspsych-content").css("margin-top", "200px");
-        $('.jspsych-content').css({ "max-width": "100%" });
-        },
-        stimulus: function () {
-        if (CSposition_between == "left") {
-          var leftImg = jsPsych.timelineVariable('CS', true);
-          var rightImg = jsPsych.timelineVariable('US', true);
-        } else {
-          var leftImg = jsPsych.timelineVariable('US', true);
-          var rightImg = jsPsych.timelineVariable('CS', true);
-        };
-        html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are ennemies?</p><br>";
-        html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
-        html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
-        return html;
-      },
-        choices: jsPsych.timelineVariable('resp'),
-        on_finish: function (data) {
-        $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
-        data.CS = jsPsych.timelineVariable('CS', true);
-        data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true);
-      },
-     }
-    ],
-    timeline_variables: [
-        { CS: CS[0], US: US[0], resp: ["They belong to rival groups", "They are competitors in business"]},
-        { CS: CS[0], US: US[0], resp: ["They have a monetary quarrel", "They belong to rival groups"]},
-        { CS: CS[0], US: US[0], resp: ["They belong to rival groups", "They have divergent political opinions"]},
-        { CS: CS[0], US: US[0], resp: ["They are competitors in business", "They have a monetary quarrel"]},
-        { CS: CS[0], US: US[0], resp: ["They have divergent political opinions", "They are competitors in business"]},
-        { CS: CS[0], US: US[0], resp: ["They have a monetary quarrel", "They have divergent political opinions"]},
-    ],
-    randomize_order: true,
-}
-var evacond_ennemies_1 = {
-    timeline: [
-        {
-        type: 'html-button-response',
-        on_load: function () {
-        $(".jspsych-content").css("margin-top", "200px");
-        $('.jspsych-content').css({ "max-width": "100%" });
-        },
-        stimulus: function () {
-        if (CSposition_between == "left") {
-          var leftImg = jsPsych.timelineVariable('CS', true);
-          var rightImg = jsPsych.timelineVariable('US', true);
-        } else {
-          var leftImg = jsPsych.timelineVariable('US', true);
-          var rightImg = jsPsych.timelineVariable('CS', true);
-        };
-        html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are ennemies?</p><br>";
-        html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
-        html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
-        return html;
-      },
-        choices: jsPsych.timelineVariable('resp'),
-        on_finish: function (data) {
-        $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
-        data.CS = jsPsych.timelineVariable('CS', true);
-        data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true);
-      },
-     }
-    ],
-    timeline_variables: [
-        { CS: CS[1], US: US[1], resp: ["They belong to rival groups", "They are competitors in business"]},
-        { CS: CS[1], US: US[1], resp: ["They have a monetary quarrel", "They belong to rival groups"]},
-        { CS: CS[1], US: US[1], resp: ["They belong to rival groups", "They have divergent political opinions"]},
-        { CS: CS[1], US: US[1], resp: ["They are competitors in business", "They have a monetary quarrel"]},
-        { CS: CS[1], US: US[1], resp: ["They have divergent political opinions", "They are competitors in business"]},
-        { CS: CS[1], US: US[1], resp: ["They have a monetary quarrel", "They have divergent political opinions"]},
-    ],
-    randomize_order: true,
-}
 
-var evacond_ennemies_2 = {
-    timeline: [
-        {
-        type: 'html-button-response',
-        on_load: function () {
-        $(".jspsych-content").css("margin-top", "200px");
-        $('.jspsych-content').css({ "max-width": "100%" });
-        },
-        stimulus: function () {
+var evacond_friends_3 = {
+    timeline_variables: stims,
+    randomize_order: true,
+    choices: jsPsych.NO_KEYS,
+    repetitions: 6, // number of pairs presentation (based on Walther, 2002)
+    //trial_duration: 2000,
+    //post_trial_gap: 4000,
+    on_load: function () {
+      //$('body').css({ "cursor": "none" });
+      $(".jspsych-content").css("margin-top", "200px");
+      $('.jspsych-content').css({ "max-width": "100%" });
+    },
+    timeline: [{
+      type: 'html-button-response',
+      stimulus: function () {
         if (CSposition_between == "left") {
+          var leftImg = CS[2];
+          var rightImg = US[2];
+        } else {
+          var leftImg = US[2];
+          var rightImg = CS[2];
+        };
+        html = '';
+        html += "<p>Why do you think these two persons are friends?</p><br>";
+        html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
+        html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
+        return html;
+      },
+      choices: function(){
+        return jsPsych.randomization.sampleWithoutReplacement(["They come from the same town", "They work together", "They have a common hobby", "They are in the same political party"], 2);
+      },
+      on_finish: function (data) {
+        $('.jspsych-content').css({ "max-width": "90%" });
+        data.cond = "evacond";
+        data.CS = jsPsych.timelineVariable('CS', true);
+        data.US = jsPsych.timelineVariable('US', true);
+        data.CSposition = jsPsych.timelineVariable('CSposition', true);
+        data.reason    = data.choices;
+      },
+    }]
+  };
+
+  var evacond_ennemies = {
+    timeline_variables: stims,
+    randomize_order: true,
+    choices: jsPsych.NO_KEYS,
+    repetitions: 5, // number of pairs presentation (based on Walther, 2002)
+    //trial_duration: 2000,
+    //post_trial_gap: 4000,
+    on_load: function () {
+      //$('body').css({ "cursor": "none" });
+      $(".jspsych-content").css("margin-top", "200px");
+      $('.jspsych-content').css({ "max-width": "100%" });
+    },
+    timeline: [{
+      type: 'html-button-response',
+      stimulus: function () {
+        if (jsPsych.timelineVariable('CSposition', true) == "left") {
           var leftImg = jsPsych.timelineVariable('CS', true);
           var rightImg = jsPsych.timelineVariable('US', true);
         } else {
@@ -714,32 +610,29 @@ var evacond_ennemies_2 = {
           var rightImg = jsPsych.timelineVariable('CS', true);
         };
         html = '';
-        html += "<p>Which of the two reasons is the more likely to explain why these persons are ennemies?</p><br>";
+        html += "<p>Why do you think these two persons are ennemies?</p><br>";
         html += "<img class='paringsImgsLeft' src='" + leftImg + "'>        ";
         html += "         <img class='paringsImgsRight' src='" + rightImg + "'>";
         return html;
       },
-        choices: jsPsych.timelineVariable('resp'),
-        on_finish: function (data) {
+       choices: function(){
+        return jsPsych.randomization.sampleWithoutReplacement(["They belong to rival groups", "They are competitors in business", "They have a monetary quarrel", "They have divergent political opinions"], 2);
+      },
+      on_finish: function (data) {
         $('.jspsych-content').css({ "max-width": "90%" });
-        data.task = "evacond";
+        data.cond = "evacond";
         data.CS = jsPsych.timelineVariable('CS', true);
         data.US = jsPsych.timelineVariable('US', true);
-        data.CSposition = CSposition_between;
-        data.reason    = jsPsych.timelineVariable('resp', true);
+        data.CSposition = jsPsych.timelineVariable('CSposition', true);
+        data.reason    = data.choices;
       },
-     }
-    ],
-    timeline_variables: [
-        { CS: CS[2], US: US[2], resp: ["They belong to rival groups", "They are competitors in business"]},
-        { CS: CS[2], US: US[2], resp: ["They have a monetary quarrel", "They belong to rival groups"]},
-        { CS: CS[2], US: US[2], resp: ["They belong to rival groups", "They have divergent political opinions"]},
-        { CS: CS[2], US: US[2], resp: ["They are competitors in business", "They have a monetary quarrel"]},
-        { CS: CS[2], US: US[2], resp: ["They have divergent political opinions", "They are competitors in business"]},
-        { CS: CS[2], US: US[2], resp: ["They have a monetary quarrel", "They have divergent political opinions"]},
-    ],
-    randomize_order: true,
-}
+    }]
+  };
+
+
+// Judgments
+  CSjudge = CS
+  //CSjudge = _.shuffle(CSjudge); // randomize order
 
    // Judgments on various dimensions
 
@@ -831,7 +724,9 @@ var evacond_ennemies_2 = {
   var scalePrudish = ["0</br>Not prudish at all", "1", "2", "3", "4", "5</br>Totally prudish"];
   var scaleBoastfull = ["0</br>Not boastfull at all", "1", "2", "3", "4", "5</br>Totally boastfull"];
 
-  var rating_0 = {
+  var CSrating_friends = [];
+  CSjudge.map(function(ciImg){
+    var likert_trial = {
         type: 'survey-likert',
         preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + "<img class='imgJudge' src='" + CS[0] + "'>",
         questions: [
@@ -940,15 +835,21 @@ var evacond_ennemies_2 = {
           data.pompous       = parsed_response.Q39 * 10;
           data.prudish       = parsed_response.Q40 * 10;
           data.boastfull     = parsed_response.Q41 * 10;
-          data.CS    = CS[0];
+          data.CSjudge    = CS[0];
         },
     };
+    CSrating_friends.push(Instr_gene_friends_part1);
+    CSrating_friends.push(evacond_friends_1);
+    CSrating_friends.push(Instr_gene_part2);
+    CSrating_friends.push(likert_trial);
+  });
 
-var rating_1 = {
+  var CSrating_ennemies = [];
+  CSjudge.map(function(ciImg){
+    var likert_trial = {
         type: 'survey-likert',
-        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + "<img class='imgJudge' src='" + CS[1] + "'>",
+        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + ciImg.imgHtml,
         questions: [
-        /*
           {prompt: "", labels: scaleSociable, required: true},
           {prompt: "", labels: scaleFunLoving, required: true},
           {prompt: "", labels: scaleLikable, required: true},
@@ -990,7 +891,6 @@ var rating_1 = {
           {prompt: "", labels: scaleMaterialistic, required: true},
           {prompt: "", labels: scalePompous, required: true},
           {prompt: "", labels: scalePrudish, required: true},
-          */
           {prompt: "", labels: scaleBoastfull, required: true},
         ],
         randomize_question_order: true, 
@@ -1053,122 +953,15 @@ var rating_1 = {
           data.pompous       = parsed_response.Q39 * 10;
           data.prudish       = parsed_response.Q40 * 10;
           data.boastfull     = parsed_response.Q41 * 10;
-          data.CS    = CS[1];
+          data.CSjudge    = ciImg.imgHtml;
         },
     };
+    CSrating_ennemies.push(Instr_gene_ennemies_part1);
+    CSrating_ennemies.push(evacond_ennemies);
+    CSrating_ennemies.push(Instr_gene_part2);
+    CSrating_ennemies.push(likert_trial);
+  });
 
-var rating_2 = {
-        type: 'survey-likert',
-        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + "<img class='imgJudge' src='" + CS[2] + "'>",
-        questions: [
-        /*
-          {prompt: "", labels: scaleSociable, required: true},
-          {prompt: "", labels: scaleFunLoving, required: true},
-          {prompt: "", labels: scaleLikable, required: true},
-          {prompt: "", labels: scalePopular, required: true},
-          {prompt: "", labels: scaleIntelligent, required: true},
-          {prompt: "", labels: scaleSkillful, required: true},
-          {prompt: "", labels: scaleRational, required: true},
-          {prompt: "", labels: scaleScientific, required: true},
-          {prompt: "", labels: scaleAmbitious, required: true},
-          {prompt: "", labels: scaleHardWorking, required: true},
-          {prompt: "", labels: scaleGrade, required: true},
-          {prompt: "", labels: scaleSuccess, required: true},
-          {prompt: "", labels: scaleSensitive, required: true},
-          {prompt: "", labels: scaleEmpathic, required: true},
-          {prompt: "", labels: scaleCompassionate, required: true},
-          {prompt: "", labels: scaleGenerous, required: true},
-          {prompt: "", labels: scaleModest, required: true},
-          {prompt: "", labels: scaleEgoistic, required: true},
-          {prompt: "", labels: scaleTrustworthy, required: true},
-          {prompt: "", labels: scaleHonest, required: true},
-          {prompt: "", labels: scaleFaithful, required: true},
-          {prompt: "", labels: scaleNormal, required: true},
-          {prompt: "", labels: scaleWellAdjusted, required: true},
-          {prompt: "", labels: scaleSatisfied, required: true},
-          {prompt: "", labels: scaleHappy, required: true},
-          {prompt: "", labels: scaleConfident, required: true},
-          {prompt: "", labels: scaleSelfRegard, required: true},
-          {prompt: "", labels: scaleMature, required: true},
-          {prompt: "", labels: scaleHealthy, required: true},
-          {prompt: "", labels: scaleStrong, required: true},
-          {prompt: "", labels: scaleSelfAssertive, required: true},
-          {prompt: "", labels: scaleDominant, required: true},
-          {prompt: "", labels: scaleLeader, required: true},
-          {prompt: "", labels: scaleVain, required: true},
-          {prompt: "", labels: scaleElitist, required: true},
-          {prompt: "", labels: scaleSnobbish, required: true},
-          {prompt: "", labels: scaleShallow, required: true},
-          {prompt: "", labels: scaleHumble, required: true},
-          {prompt: "", labels: scaleMaterialistic, required: true},
-          {prompt: "", labels: scalePompous, required: true},
-          {prompt: "", labels: scalePrudish, required: true},
-          */
-          {prompt: "", labels: scaleBoastfull, required: true},
-        ],
-        randomize_question_order: true, 
-        button_label: 'Continue',
-        on_load: function() {
-          window.scrollTo(0, 0);
-          $(".jspsych-content").css("max-width", "100%");
-          $(".jspsych-content").css("margin-top", "430px");
-          $(".jspsych-survey-likert-statement").css("margin", "0px");
-          $(".jspsych-survey-likert-statement").css("padding", "0px");
-          $(".jspsych-survey-likert-opts").css("padding", "0 0 10px");
-          $("#jspsych-survey-likert-next").css("margin-top", "10px");
-          $("#jspsych-survey-likert-form").css("width", "800px");
-          $("li").css("width", "9%");
-        //   $("li:first-of-type").css("width", "110px");
-        //   $("li:last-of-type").css("width", "110px");
-        },
-        on_finish: function(data) {
-          data.task = "CSrating";
-          var parsed_response  = JSON.parse(data.responses);
-          data.sociable      = parsed_response.Q0 * 10;
-          data.funloving     = parsed_response.Q1 * 10;
-          data.likable       = parsed_response.Q2 * 10;
-          data.popular       = parsed_response.Q3 * 10;
-          data.intelligent   = parsed_response.Q4 * 10;
-          data.skillful      = parsed_response.Q5 * 10;
-          data.rational      = parsed_response.Q6 * 10;
-          data.scientific    = parsed_response.Q7 * 10;
-          data.ambitious     = parsed_response.Q8 * 10;
-          data.hardworking   = parsed_response.Q9 * 10;
-          data.grade         = parsed_response.Q10 * 10;
-          data.success       = parsed_response.Q11 * 10;
-          data.sensitive     = parsed_response.Q12 * 10;
-          data.empathic      = parsed_response.Q13 * 10;
-          data.compassionate = parsed_response.Q14 * 10;
-          data.generous      = parsed_response.Q15 * 10;
-          data.modest        = parsed_response.Q16 * 10;
-          data.egoistic      = parsed_response.Q17 * 10;
-          data.trustworthy   = parsed_response.Q18 * 10;
-          data.honest        = parsed_response.Q19 * 10;
-          data.faithful      = parsed_response.Q20 * 10;
-          data.normal        = parsed_response.Q21 * 10;
-          data.welladjusted  = parsed_response.Q22 * 10;
-          data.satisfied     = parsed_response.Q23 * 10;
-          data.happy         = parsed_response.Q24 * 10;
-          data.confident     = parsed_response.Q25 * 10;
-          data.selfregard    = parsed_response.Q26 * 10;
-          data.mature        = parsed_response.Q27 * 10;
-          data.healthy       = parsed_response.Q28 * 10;
-          data.strong        = parsed_response.Q29 * 10;
-          data.selfassertive = parsed_response.Q30 * 10;
-          data.dominant      = parsed_response.Q31 * 10;
-          data.leader        = parsed_response.Q32 * 10;
-          data.vain          = parsed_response.Q33 * 10;
-          data.elitist       = parsed_response.Q34 * 10;
-          data.snobbish      = parsed_response.Q35 * 10;
-          data.shallow       = parsed_response.Q36 * 10;
-          data.humble        = parsed_response.Q37 * 10;
-          data.materialistic = parsed_response.Q38 * 10;
-          data.pompous       = parsed_response.Q39 * 10;
-          data.prudish       = parsed_response.Q40 * 10;
-          data.boastfull     = parsed_response.Q41 * 10;
-          data.CS    = CS[2];
-        },
-    };
 
  /* Attractiveness INSTRUCTIONS */
   var attractiveness_instr = {
@@ -1193,7 +986,9 @@ var rating_2 = {
   };
 
 // Judgments on attractiveness
-var USCSjudge = _.flattenDeep([US, CS]);
+
+USjudge = US.map(function(e) {return {imgHtml: "<img class='imgJudge' src='" + e + "'>"}});
+var USCSjudge = _.flattenDeep([USjudge, CSjudge]);
 USCSjudge = _.shuffle(USCSjudge); // randomize order
 
 var scaleAttractiveness = ["-3</br>Extremely unattractive", "-2", "-1", "0", "1", "2", "3</br>Extremely attractive"];
@@ -1202,7 +997,7 @@ var judgments_attractiveness = [];
 USCSjudge.map(function(ciImg){
     var likert_trial = {
         type: 'survey-likert',
-        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>"+ "<img class='imgJudge' src='" + ciImg + "'>",
+        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + ciImg.imgHtml,
         questions: [
           {prompt: "", labels: scaleAttractiveness, required: true},
         ],
@@ -1225,7 +1020,7 @@ USCSjudge.map(function(ciImg){
           data.task = "USCSattractiveness";
           var parsed_response  = JSON.parse(data.responses);
           data.attractiveness    = parsed_response.Q0 * 10;
-          data.facejudged    = ciImg;
+          data.facejudged    = ciImg.imgHtml;
         },
     };
     judgments_attractiveness.push(likert_trial);
@@ -1257,12 +1052,12 @@ USCSjudge.map(function(ciImg){
   var page_1_options = ["<img class='imgitemMemo' src='"+US[0]+"'>", "<img class='imgitemMemo' src='"+US[1]+"'>", "<img class='imgitemMemo' src='"+US[2]+"'>"];
 
 
-// Judgments on awareness
+// Judgments on attractiveness
 var item_awareness = [];
-CS.map(function(ciImg){
+CSjudge.map(function(ciImg){
     var likert_trial = {
         type: 'survey-multi-choice',
-        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + "<img class='imgJudge' src='" + ciImg + "'>",
+        preamble: "<img class='imgBack' src='Stim_background/Fond_blanc.jpeg'>" + ciImg.imgHtml,
         questions: [
           {prompt: "Indicate which of the three face presented below went together with this face:",  options: page_1_options, required: true, horizontal: true,},
         ],
@@ -1285,7 +1080,7 @@ CS.map(function(ciImg){
           data.task = "CSitem_awareness";
           var parsed_response  = JSON.parse(data.responses);
           data.itemMemory    = parsed_response.Q0;
-          data.facejudged    = ciImg;
+          data.facejudged    = ciImg.imgHtml
           //data.faceattract              = ciImg.imgHtml;
         },
     };
@@ -1298,11 +1093,6 @@ CS.map(function(ciImg){
             questions: [{ prompt: 'What do you think the researchers were trying to achieve in this study?', rows: 3, columns: 60 }],
             button_label: "continue",
         }],
-      on_load: function() {
-          window.scrollTo(0, 0);
-          $(".jspsych-content").css("margin-top", "200px");
-          $(".jspsych-content").css("max-width", "90%");
-        },
         loop_function: function (data) {
             var res = data.values()[0].responses;
             var res = JSON.parse(res).Q0;
@@ -1492,27 +1282,16 @@ CS.map(function(ciImg){
 
 
   /* TIMELINES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  timeline.push(consent);
-  timeline.push(activeFullscreen);
-  timeline.push(Quit_expe);
+  //timeline.push(consent);
+ // timeline.push(activeFullscreen);
+ // timeline.push(Quit_expe);
 
 switch(relation) {
   case "friends":
     timeline.push(Instr_gene1,
                   Instr_gene2,
                   Instr_gene3,
-                  Instr_gene_friends_part1_0,
-                  evacond_friends_0,
-                  Instr_gene_part2_0,
-                  rating_0,
-                  Instr_gene_friends_part1_1,
-                  evacond_friends_1,
-                  Instr_gene_part2_1,
-                  rating_1,
-                  Instr_gene_friends_part1_2,
-                  evacond_friends_2,
-                  Instr_gene_part2_2,
-                  rating_2,
+                  CSrating_friends,
                   attractiveness_instr,
                   judgments_attractiveness,
                   memory_instr,
@@ -1532,18 +1311,7 @@ switch(relation) {
     timeline.push(Instr_gene1,
                   Instr_gene2,
                   Instr_gene3,
-                  Instr_gene_ennemies_part1_0,
-                  evacond_ennemies_0,
-                  Instr_gene_part2_0,
-                  rating_0,
-                  Instr_gene_ennemies_part1_1,
-                  evacond_ennemies_1,
-                  Instr_gene_part2_1,
-                  rating_1,
-                  Instr_gene_ennemies_part1_2,
-                  evacond_ennemies_2,
-                  Instr_gene_part2_2,
-                  rating_2,
+                  CSrating_ennemies,
                   attractiveness_instr,
                   judgments_attractiveness,
                   memory_instr,
@@ -1569,12 +1337,12 @@ switch(relation) {
     timeline: timeline,
     preload_images: preloadimages,
     max_load_time: 500*1000,
-    exclusions: {
-     min_width: 1100,
-      min_height: 600,
-     max_width: 1600,
-     max_height: 900,
-    },
+    //exclusions: {
+     // min_width: 1100,
+    //  min_height: 600,
+     // max_width: 1600,
+     // max_height: 900,
+    //},
     on_finish: function (data) {
       $("#jspsych-content").html("<img src='https://i.gifer.com/4V0b.gif'>");
 
